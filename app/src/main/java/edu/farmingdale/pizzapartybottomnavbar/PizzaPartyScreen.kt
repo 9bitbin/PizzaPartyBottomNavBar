@@ -24,6 +24,8 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import kotlin.math.ceil
 
@@ -33,47 +35,54 @@ import kotlin.math.ceil
 // a subclass of ViewModel. Add the following properties to the PizzaPartyViewModel - see Brightspace
 
 @Composable
-fun PizzaPartyScreen( modifier: Modifier = Modifier) {
+fun PizzaPartyScreen(modifier: Modifier = Modifier, viewModel: PizzaPartyViewModel = viewModel()) {
+    // State to hold the total number of pizzas required
     var totalPizzas by remember { mutableIntStateOf(0) }
+    // State to hold the input for the number of people
     var numPeopleInput by remember { mutableStateOf("") }
+    // State to hold the selected hunger level
     var hungerLevel by remember { mutableStateOf("Medium") }
 
+    // Main container for the screen
     Column(
-        modifier = modifier.padding(10.dp)
+        modifier = modifier.padding(10.dp) // Padding for the column
     ) {
+        // Title of the screen
         Text(
             text = "Pizza Party",
             fontSize = 38.sp,
-            modifier = modifier.padding(bottom = 16.dp)
+            modifier = modifier.padding(bottom = 16.dp) // Padding below the title
         )
+        // Input field for the number of people
         NumberField(
             labelText = "Number of people?",
             textInput = numPeopleInput,
             onValueChange = { numPeopleInput = it },
-            modifier = modifier.padding(bottom = 16.dp).fillMaxWidth()
+            modifier = modifier.padding(bottom = 16.dp).fillMaxWidth() // Padding below the input field
         )
+        // Radio buttons for selecting hunger level
         RadioGroup(
             labelText = "How hungry?",
-            radioOptions = listOf("Light", "Medium", "Very hungry"),
+            radioOptions = listOf("Light", "Medium", "Hungry", "Very hungry"),
             selectedOption = hungerLevel,
             onSelected = { hungerLevel = it },
             modifier = modifier
         )
+        // Display the total number of pizzas required
         Text(
             text = "Total pizzas: $totalPizzas",
             fontSize = 22.sp,
-            modifier = modifier.padding(top = 16.dp, bottom = 16.dp)
+            modifier = modifier.padding(top = 16.dp, bottom = 16.dp) // Padding above and below the text
         )
+        // Button to calculate the number of pizzas required
         Button(
-            onClick = {            totalPizzas = calculateNumPizzas(numPeopleInput.toInt(),
-                hungerLevel)
-
+            onClick = {
+                totalPizzas = calculateNumPizzas(numPeopleInput.toInt(), hungerLevel)
             },
-            modifier = modifier.fillMaxWidth()
+            modifier = modifier.fillMaxWidth() // Button takes the full width
         ) {
-            Text("Calculate")
+            Text("Calculate") // Button label
         }
-
     }
 }
 
@@ -84,14 +93,14 @@ fun NumberField(
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-
+    // Text field for inputting the number of people
     TextField(
-        value = textInput,
-        onValueChange = onValueChange,
-        label = { Text(labelText) },
-        singleLine = true,
+        value = textInput, // Current input value
+        onValueChange = onValueChange, // Update the input value when changed
+        label = { Text(labelText) }, // Label for the text field
+        singleLine = true, // Restrict to a single line
         keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Number
+            keyboardType = KeyboardType.Number // Only allow numerical input
         ),
         modifier = modifier
     )
@@ -105,46 +114,63 @@ fun RadioGroup(
     onSelected: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    // Lambda to determine if a radio button is selected
     val isSelectedOption: (String) -> Boolean = { selectedOption == it }
 
+    // Main container for the radio group
     Column {
+        // Label for the radio group
         Text(labelText)
+        // Iterate through each radio option
         radioOptions.forEach { option ->
             Row(
                 modifier = modifier
                     .selectable(
-                        selected = isSelectedOption(option),
-                        onClick = { onSelected(option) },
-                        role = Role.RadioButton
+                        selected = isSelectedOption(option), // Determine if this option is selected
+                        onClick = { onSelected(option) }, // Set this option as selected when clicked
+                        role = Role.RadioButton // Set the role for accessibility purposes
                     )
-                    .padding(8.dp)
+                    .padding(8.dp) // Padding around each row
             ) {
+                // Radio button component
                 RadioButton(
-                    selected = isSelectedOption(option),
-                    onClick = null,
-                    modifier = modifier.padding(end = 8.dp)
+                    selected = isSelectedOption(option), // Determine if the button is selected
+                    onClick = null, // The click is handled by the row
+                    modifier = modifier.padding(end = 8.dp) // Padding to the right of the radio button
                 )
+                // Display the text for each radio option
                 Text(
                     text = option,
-                    modifier = modifier.fillMaxWidth()
+                    modifier = modifier.fillMaxWidth() // Fill the width of the row
                 )
             }
         }
     }
 }
 
-
+// Function to calculate the number of pizzas needed based on the number of people and hunger level
 fun calculateNumPizzas(
     numPeople: Int,
     hungerLevel: String
 ): Int {
-    val slicesPerPizza = 8
+    val slicesPerPizza = 8 // Number of slices per pizza
     val slicesPerPerson = when (hungerLevel) {
-        "Light" -> 2
-        "Medium" -> 3
-        else -> 5
+        "Light" -> 2 // Light hunger: 2 slices per person
+        "Medium" -> 3 // Medium hunger: 3 slices per person
+        "Hungry" -> 4 // Hungry: 4 slices per person
+        else -> 5 // Very hungry: 5 slices per person
     }
 
+    // Calculate the total number of pizzas required, rounded up to the next whole number
     return ceil(numPeople * slicesPerPerson / slicesPerPizza.toDouble()).toInt()
 }
 
+// ViewModel class for Pizza Party screen
+class PizzaPartyViewModel : ViewModel() {
+    // State for total number of pizzas required
+    var totalPizzas by mutableStateOf(0)
+    // State for input number of people
+    var numPeopleInput by mutableStateOf("")
+    // State for selected hunger level
+    var hungerLevel by mutableStateOf("Medium")
+}

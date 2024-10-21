@@ -32,30 +32,53 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun Screen3() {
+    // State for slider value, initialized to 0.5
     var sliderValue by remember { mutableStateOf(0.5f) }
+
+    // State for checkbox value, initialized to true
     var chkd by remember { mutableStateOf(true) }
 
-
+    // Get the context to use for launching intents
     val context = LocalContext.current
-    Column ( modifier = Modifier.padding(horizontal = 20.dp).fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally){
-        Slider(value = sliderValue, onValueChange = { sliderValue=it }, Modifier.fillMaxWidth()
-            , enabled = chkd)
 
-        Text (fontSize = 20.sp, text = "Second Screen" )
+    // Main container for the screen content
+    Column(
+        modifier = Modifier
+            .fillMaxSize() // Fill the entire available space
+            .background( // Set a gradient background
+                brush = Brush.verticalGradient(
+                    colors = listOf(Color.Cyan, Color.Blue) // Colors for the gradient
+                )
+            )
+            .padding(20.dp), // Padding around the entire column
+        verticalArrangement = Arrangement.Center, // Center elements vertically
+        horizontalAlignment = Alignment.CenterHorizontally // Center elements horizontally
+    ) {
+        // Slider for adjusting a value between 0 and 1
+        Slider(
+            value = sliderValue, // Current value of the slider
+            onValueChange = { sliderValue = it }, // Update slider value when changed
+            Modifier.fillMaxWidth(), // Make the slider take full width
+            enabled = chkd // Enable or disable the slider based on checkbox state
+        )
 
-        Button(onClick = { val newInt = Intent(Intent.ACTION_VIEW)
-            newInt.setData(Uri.parse("tel:6314202000"))
-            context.startActivity(newInt) }) {
-            Text(fontSize = 20.sp, text ="Call me")
+        // Display the current value of the slider
+        Text(fontSize = 20.sp, text = "Slider Value: ${String.format("%.2f", sliderValue)}")
+
+        // Button that starts an intent to make a phone call
+        Button(onClick = {
+            val newInt = Intent(Intent.ACTION_VIEW) // Create a new intent for viewing
+            newInt.setData(Uri.parse("tel:6314202000")) // Set the data to a phone number
+            context.startActivity(newInt) // Start the activity to make a call
+        }) {
+            Text(fontSize = 20.sp, text = "Call me") // Button label
         }
 
-        Checkbox(checked = chkd, onCheckedChange = { chkd=it }, modifier = Modifier.padding(10.dp))
-
+        // Checkbox to enable or disable the slider
+        Checkbox(
+            checked = chkd, // Current state of the checkbox
+            onCheckedChange = { chkd = it }, // Update checkbox state when clicked
+            modifier = Modifier.padding(10.dp) // Padding around the checkbox
+        )
     }
-
 }
-
-
-
