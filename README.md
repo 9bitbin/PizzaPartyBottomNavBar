@@ -29,7 +29,7 @@ Welcome to the **Pizza Party Bottom Navbar** app! This is a simple Android app t
 
 1. **Clone the Repository**:
    ```sh
-   git clone https://github.com/yourusername/pizza-party-app.git
+   git clone https://github.com/9bitbin/PizzaPartyBottomNavBar.git
    ```
 
 2. **Open in Android Studio**: Make sure you have the latest version of Android Studio installed.
@@ -47,12 +47,8 @@ Welcome to the **Pizza Party Bottom Navbar** app! This is a simple Android app t
 
 Contributions are welcome! Feel free to open issues or submit pull requests if you have ideas to improve the app.
 
-## 📜 License
-
-This project is licensed under the **MIT License**.
-
 ## 📧 Contact
 
-If you have any questions or suggestions, feel free to reach out to me via email at [youremail@example.com].
+If you have any questions or suggestions, feel free to reach out to me via email at [shreh@farmingdale.edu].
 
 Enjoy your **Pizza Party App**! 🍕🎉
