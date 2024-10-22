@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.sp
 // done: the UI has a gradient background and padding blue dark and light.
 @Composable
 fun Screen3() {
+
     // State for slider value, initialized to 0.5
     var sliderValue by remember { mutableStateOf(0.5f) }
 
@@ -47,7 +48,7 @@ fun Screen3() {
             .fillMaxSize() // Fill the entire available space
             .background( // Set a gradient background
                 brush = Brush.verticalGradient(
-                    colors = listOf(Color.Cyan, Color.Blue) // Colors for the gradient
+                    colors = listOf(Color.Red, Color.White, Color.Blue) // Colors for the gradient
                 )
             )
             .padding(20.dp), // Padding around the entire column
