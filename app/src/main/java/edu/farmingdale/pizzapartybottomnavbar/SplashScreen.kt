@@ -58,4 +58,6 @@ fun SplashScreen(navController: NavHostController) {
             modifier = Modifier.wrapContentSize(Alignment.Center) // Ensure the image wraps content and stays centered
         )
     }
-}
+}// SplashScreen function ends here
+
+
