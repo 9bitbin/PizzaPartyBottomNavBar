@@ -1,5 +1,9 @@
 # 🍕 Pizza Party Bottom Navbar App
 
+#Name: Himal Shrestha
+#Date: 10/21/2024
+
+
 Welcome to the **Pizza Party Bottom Navbar** app! This is a simple Android app that provides multiple screens, including a Welcome screen, a Pizza Order screen, a GPA Calculator, and Screen 3. The app uses **Jetpack Compose** for UI and features **drawer navigation** for easy access to each section. This README will give you an overview of the app's features, structure, and how to get started.
 
 ## 🚀 Features
