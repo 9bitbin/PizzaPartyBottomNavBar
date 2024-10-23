@@ -1,5 +1,9 @@
 package edu.farmingdale.pizzapartybottomnavbar
-
+/**
+ * Name: Himal Shrestha
+ * Class: Mobile Application Development
+ * Prof: Alrajab
+ */
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -38,8 +42,7 @@ class MainActivity : ComponentActivity() {
                     Box(
                         modifier = Modifier.padding(paddingValues)
                     ) {
-                        NavigationGraph(navController = navController) {
-                                isVisible ->
+                        NavigationGraph(navController = navController) { isVisible ->
                             buttonsVisible = isVisible
                         }
                     }

@@ -1,5 +1,12 @@
 package edu.farmingdale.pizzapartybottomnavbar
 
+/**
+ * Name: Himal Shrestha
+ * Class: Mobile Application Development
+ * Prof: Alrajab
+ *
+ */
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -58,7 +65,9 @@ fun PizzaPartyScreen(modifier: Modifier = Modifier, viewModel: PizzaPartyViewMod
             labelText = "Number of people?",
             textInput = numPeopleInput,
             onValueChange = { numPeopleInput = it },
-            modifier = modifier.padding(bottom = 16.dp).fillMaxWidth() // Padding below the input field
+            modifier = modifier
+                .padding(bottom = 16.dp)
+                .fillMaxWidth() // Padding below the input field
         )
         // Radio buttons for selecting hunger level
         RadioGroup(
@@ -70,16 +79,15 @@ fun PizzaPartyScreen(modifier: Modifier = Modifier, viewModel: PizzaPartyViewMod
         )
         // Display the total number of pizzas required
         Text(
-            text = "Total pizzas: $totalPizzas",
-            fontSize = 22.sp,
-            modifier = modifier.padding(top = 16.dp, bottom = 16.dp) // Padding above and below the text
+            text = "Total pizzas: $totalPizzas", fontSize = 22.sp, modifier = modifier.padding(
+                top = 16.dp, bottom = 16.dp
+            ) // Padding above and below the text
         )
         // Button to calculate the number of pizzas required
         Button(
             onClick = {
                 totalPizzas = calculateNumPizzas(numPeopleInput.toInt(), hungerLevel)
-            },
-            modifier = modifier.fillMaxWidth() // Button takes the full width
+            }, modifier = modifier.fillMaxWidth() // Button takes the full width
         ) {
             Text("Calculate") // Button label
         }
@@ -91,7 +99,7 @@ fun NumberField(
     labelText: String,
     textInput: String,
     onValueChange: (String) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     // Text field for inputting the number of people
     TextField(
@@ -101,8 +109,7 @@ fun NumberField(
         singleLine = true, // Restrict to a single line
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Number // Only allow numerical input
-        ),
-        modifier = modifier
+        ), modifier = modifier
     )
 }
 
@@ -140,8 +147,7 @@ fun RadioGroup(
                 )
                 // Display the text for each radio option
                 Text(
-                    text = option,
-                    modifier = modifier.fillMaxWidth() // Fill the width of the row
+                    text = option, modifier = modifier.fillMaxWidth() // Fill the width of the row
                 )
             }
         }
@@ -151,7 +157,7 @@ fun RadioGroup(
 // Function to calculate the number of pizzas needed based on the number of people and hunger level
 fun calculateNumPizzas(
     numPeople: Int,
-    hungerLevel: String
+    hungerLevel: String,
 ): Int {
     val slicesPerPizza = 8 // Number of slices per pizza
     val slicesPerPerson = when (hungerLevel) {
@@ -169,8 +175,10 @@ fun calculateNumPizzas(
 class PizzaPartyViewModel : ViewModel() {
     // State for total number of pizzas required
     var totalPizzas by mutableStateOf(0)
+
     // State for input number of people
     var numPeopleInput by mutableStateOf("")
+
     // State for selected hunger level
     var hungerLevel by mutableStateOf("Medium")
 }
