@@ -4,7 +4,6 @@ package edu.farmingdale.pizzapartybottomnavbar
  * Name: Himal Shrestha
  * Class: Mobile Application Development
  * Prof: Alrajab
- * Homework 8 - Pizza Party App Nav
  */
 
 import androidx.compose.foundation.background

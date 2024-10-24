@@ -1,5 +1,10 @@
 package edu.farmingdale.pizzapartybottomnavbar
-
+/**
+ * Name: Himal Shrestha
+ * Class: Mobile Application Development
+ * Prof: Alrajab
+ *
+ */
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.outlined.Home

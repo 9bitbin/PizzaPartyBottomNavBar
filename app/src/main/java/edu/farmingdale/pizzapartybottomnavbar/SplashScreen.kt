@@ -1,5 +1,9 @@
 package edu.farmingdale.pizzapartybottomnavbar
-
+/**
+ * Name: Himal Shrestha
+ * Class: Mobile Application Development
+ * Prof: Alrajab
+ */
 import android.view.animation.OvershootInterpolator
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween

@@ -1,5 +1,10 @@
 package edu.farmingdale.pizzapartybottomnavbar
-
+/**
+ * Name: Himal Shrestha
+ * Class: Mobile Application Development
+ * Prof: Alrajab
+ *
+ */
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem

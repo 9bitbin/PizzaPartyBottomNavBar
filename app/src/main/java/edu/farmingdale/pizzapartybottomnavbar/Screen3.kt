@@ -1,5 +1,10 @@
 package edu.farmingdale.pizzapartybottomnavbar
-
+/**
+ * Name: Himal Shrestha
+ * Class: Mobile Application Development
+ * Prof: Alrajab
+ *
+ */
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.background
