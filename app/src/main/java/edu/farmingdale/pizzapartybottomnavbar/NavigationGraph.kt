@@ -27,7 +27,7 @@ import kotlinx.coroutines.launch
 // ToDo 8: This is the homework:
 // add a drawer navigation as described in drawable drawermenu.png
 // Improve the design and integration of the app for 5 extra credit points.
-
+//Done: improved the pizza party screen, also make the drawer navigation work.
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NavigationGraph(

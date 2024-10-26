@@ -24,7 +24,7 @@ import androidx.navigation.NavHostController
 import kotlinx.coroutines.delay
 
 // ToDo 1: The splash screen should have the image displayed in the center of the screen.
-
+// Done made it in the SplashScreen function
 @Composable
 fun SplashScreen(navController: NavHostController) {
 

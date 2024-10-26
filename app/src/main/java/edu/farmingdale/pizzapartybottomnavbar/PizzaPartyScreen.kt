@@ -32,6 +32,10 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlin.math.ceil
+// ToDo 6: Add another level of hunger that is Hungry that is in between Medium and Very hungry
+// Done Hungry is between Ravenous and Medium
+// ToDo 7: Using the ViewModel class, create a new ViewModel class called PizzaPartyViewModel as
+// a subclass of ViewModel. Add the following properties to the PizzaPartyViewModel - see Brightspace
 
 @Preview(showBackground = true)
 @Composable
